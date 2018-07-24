@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <style>
+        .typewriter h1 {
+            font-family: monospace;
+            /* Web-safe typewriter-like font */
+            overflow: hidden;
+            /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid orange;
+            /* The typwriter cursor */
+            white-space: nowrap;
+            /* Keeps the content on a single line */
+            margin: 0 auto 0 0;
+            /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em;
+            /* Adjust as needed */
+            animation: typing 3.5s steps(30, end),
+            blinking-cursor .5s step-end infinite;
+            display: inline-block;
+        }
+
+        /* The typing effect */
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+            to {
+                width: 100%
+            }
+        }
+
+        /* The typewriter cursor effect */
+
+        @keyframes blinking-cursor {
+            from,
+            to {
+                border-color: transparent
+            }
+            50% {
+                border-color: orange;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="typewriter">
+        <h1>The cat and the hat.</h1>
+    </div>
+</body>
+
+</html>
