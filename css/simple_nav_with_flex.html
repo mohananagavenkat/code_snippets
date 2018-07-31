@@ -25,9 +25,12 @@
         .navbar {
             border: 1px solid black;
             background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: flex-end;
         }
 
         .nav {
+            flex-basis: 75%;
             list-style: none;
             display: flex;
         }
@@ -65,6 +68,9 @@
         }
 
         @media screen and (max-width:768px) {
+            .navbar {
+                display: block;
+            }
             .navbar .nav-toggle {
                 display: block;
             }
