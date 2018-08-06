@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Grid With Simple Animation</title>
+    <style>
+        :root{
+            --animation-time:10s;
+        }
+        * {
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: grid;
+            padding: 10px;
+            background: #bada55;
+            grid-gap: 10px;
+            grid-template-columns: repeat(3, 100px);
+            justify-content: start;
+            animation: alignment var(--animation-time) linear infinite alternate;
+            position: relative;
+        }
+
+        .container::after {
+            content: "justify-content:start";
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            font-size: 40px;
+            text-align: center;
+            animation: changetext var(--animation-time) linear infinite alternate;
+        }
+
+        .item {
+            background: #a55;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+        @keyframes alignment {
+            0% {
+                justify-content: start;
+            }
+            20% {
+                justify-content: space-between;
+
+            }
+            40% {
+                justify-content: space-around
+            }
+            60% {
+                justify-content: space-evenly;
+            }
+            80% {
+                justify-content: center
+            }
+            100% {
+                justify-content: end;
+            }
+        }
+
+        @keyframes changetext {
+            0% {
+
+                content: "justify-content:start";
+            }
+            20% {
+
+                content: "justify-content:space-between";
+
+            }
+            40% {
+                content: "justify-content:space-around";
+            }
+            60% {
+                content: "justify-content:space-evenly";
+            }
+            80% {
+                content: "justify-content:center";
+            }
+            100% {
+                content: "justify-content:end";
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item item1">item1</div>
+        <div class="item item2">item2</div>
+        <div class="item item3">item3</div>
+        <div class="item item4">item4</div>
+        <div class="item item5">item5</div>
+        <div class="item item6">item6</div>
+    </div>
+</body>
+
+</html>
