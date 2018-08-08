@@ -50,6 +50,44 @@
         .options input {
             margin-bottom: 1rem;
         }
+
+        /* switch styles */
+        .switch{
+            position:relative;
+            display: inline-block;
+            width:60px;
+            height:35px;
+        }
+        .switch input{
+            display: none;
+        }
+        .slider{
+            position: absolute;
+            top:0;
+            right: 0;
+            bottom:0;
+            left:0;
+            background: #e4e4;
+            transition: .4s;
+            border-radius: 30px;
+            transform: translateY(50%);
+        }
+        .slider::before{
+            position: absolute;
+            content:"";
+            width:25px;
+            left:5px;
+            top:5px;
+            height:25px;
+            border-radius:50%;
+            background: #fff;
+        }
+        input:checked+.slider{
+            background: #2196F3;
+        }
+        input:checked+.slider::before{
+            transform: translateX(25px);
+        }
     </style>
 </head>
 
@@ -64,19 +102,35 @@
                 <input type="text" class="prefix" id="font-size" placeholder="Font Size">
             </div>
             <div class="bold-option">
-                <label for="bold">bold</label>
-                <input type="checkbox" id="bold" class="checkbox">
-                <span class="slider"></span>
+                <!-- <label for="bold">bold</label> -->
+                <!-- <input type="checkbox" id="bold" class="checkbox">
+                <span class="slider"></span> -->
+                <!-- Rounded switch -->
+                <span>Bold</span>
+                <label for="bold" class="switch">
+                    <input type="checkbox" id="bold">
+                    <span class="slider round"></span>
+                </span>
             </div>
             <div class="underline-option">
-                <label for="underline">underline</label>
-                <input type="checkbox" id="underline" class="checkbox">
-                <span class="slider"></span>
+                <!-- <label for="underline">underline</label> -->
+                <!-- <input type="checkbox" id="underline" class="checkbox">
+                <span class="slider"></span> -->
+                <span>underline</span>
+                <label for="underline" class="switch">
+                    <input type="checkbox" id="underline">
+                    <span class="slider round"></span>
+                </span>
             </div>
             <div class="italic-option">
-                <label for="italic">italic</label>
-                <input type="checkbox" id="italic" class="checkbox">
-                <span class="slider"></span>
+                <!-- <label for="italic">italic</label> -->
+                <!-- <input type="checkbox" id="italic" class="checkbox">
+                <span class="slider"></span> -->
+                <span>italic</span>
+                <label for="italic" class="switch">
+                    <input type="checkbox" id="italic">
+                    <span class="slider round"></span>
+                </span>
             </div>
         </div>
         <div class="content" id="content" contenteditable>Type Here</div>
@@ -89,18 +143,7 @@
 
         let content = _('content');
 
-        let initialFocus = 0;
-
         console.log(content.innerHTML);
-
-        content.addEventListener('focus', function () {
-            if (initialFocus == 0) {
-                this.innerHTML = "";
-                initialFocus = 1;
-            }
-        });
-
-
 
         let color = _('color');
         let fs = _('font-size');
