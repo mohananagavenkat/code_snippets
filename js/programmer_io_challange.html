@@ -30,25 +30,15 @@
         .options {
             background: #bada55;
             flex-basis: 40%;
-            padding-top: 3rem;
+            padding: 3rem 0 0 1rem;
         }
 
         .options>* {
             flex-basis: 100%;
+            height:50px;
         }
-
-        .content {
-            background: #e4e4e4;
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            padding: 1rem;
-        }
-
-        .options input {
-            margin-bottom: 1rem;
+        .options label{
+            transform: translateY(50%);
         }
 
         /* switch styles */
@@ -70,7 +60,6 @@
             background: #e4e4;
             transition: .6s ease-in;
             border-radius: 30px;
-            transform: translateY(50%);
         }
         .slider::before{
             position: absolute;
@@ -89,6 +78,42 @@
         input:checked+.slider::before{
             transform: translateX(25px);
         }
+
+        .color-option{
+            display: flex;
+        }
+
+        .color-option input{
+            align-self:center;
+            margin-left:10px;
+        }
+
+        #color-preview{
+            display: inline-block;
+            width:50px;
+            height:50px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .content {
+            background: #e4e4e4;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            padding: 1rem;
+        }
+
+        input{
+            border-radius: 5px;
+            height:30px;
+        }
+
+        input#font-size{
+            margin-top:1rem;
+        }
     </style>
 </head>
 
@@ -97,10 +122,10 @@
         <div class="options">
             <div class="color-option">
                 <span id="color-preview"></span>
-                <input type="text" class="jscolor" id="color" placeholder="Color">
+                <input type="text" id="color" placeholder="Color">
             </div>
             <div class="font-size-option">
-                <input type="text" class="prefix" id="font-size" placeholder="Font Size">
+                <input type="number" class="prefix" id="font-size" placeholder="Font Size">
             </div>
             <div class="bold-option">
                 <!-- <label for="bold">bold</label> -->
@@ -153,7 +178,8 @@
         let italic = _('italic');
 
         color.addEventListener('input', function (event) {
-            changeContentStyle("color", this.value);
+            changeContentStyle("color", "#"+this.value);
+            _('color-preview').style.background = "#"+this.value;
         })
 
         fs.addEventListener('input', function (event) {
