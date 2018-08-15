@@ -1,4 +1,6 @@
 # code_snippets
-Some Useful ```CSS``` ```JS``` ```PHP``` .... code snippets
+Some Useful ```CSS``` ```JS``` ```PHP``` code snippets while developement process
 
-* This repo contains some simple code snippets that I coded while I was practising
+This repo contains some small code snippets that I wrote while I was learning new stuff, some UI components, some scripts and more...
+
+Feel free to look into these simple snippets
