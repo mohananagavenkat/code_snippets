@@ -48,19 +48,19 @@
             transform: rotateY(180deg);
         }
 
-        .button{
-            text-align:center;
-            margin-top:2rem;
+        .button {
+            text-align: center;
+            margin-top: 2rem;
         }
 
-        .button button{
-            min-width:120px;
-            font-size:20px;
-            padding:12px;
-            background:linear-gradient(to right,gold 0%,orange 100%);
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
+        .button button {
+            min-width: 120px;
+            font-size: 20px;
+            padding: 12px;
+            background: linear-gradient(to right, gold 0%, orange 100%);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -77,11 +77,11 @@
     <script>
         const flip = document.getElementById('flip');
 
-const container = document.querySelector('.container');
+        const container = document.querySelector('.container');
 
-flip.addEventListener('click',function(event){
-	container.classList.toggle('flipped');
-});
+        flip.addEventListener('click', () => {
+          container.classList.toggle('flipped');
+        });
     </script>
 </body>
 

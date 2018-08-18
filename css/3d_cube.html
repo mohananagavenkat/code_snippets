@@ -125,50 +125,51 @@
     </div>
     <script>
         {
-            const box = document.querySelector('.box');
+          const box = document.querySelector('.box');
 
-            let rotateX = 0;
-            let rotateY = 0;
-
-            window.addEventListener('keydown', function (event) {
-                changeBoxView(event.keyCode);
-            });
-
-            function changeBoxView(code) {
-                switch (code) {
-                    case 37:
-                        rotateY -= 5;
-                        break;
-                    case 38:
-                        rotateX += 5;
-                        break;
-                    case 39:
-                        rotateY += 5;
-                        break;
-                    case 40:
-                        rotateX -= 5;
-                        break;
-                }
-                box.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          let rotateX = 0;
+          let rotateY = 0;
+          function changeBoxView(code) {
+            /* eslint-disable  default-case */
+            switch (code) {
+              case 37:
+                rotateY -= 5;
+                break;
+              case 38:
+                rotateX += 5;
+                break;
+              case 39:
+                rotateY += 5;
+                break;
+              case 40:
+                rotateX -= 5;
+                break;
             }
+            /* eslint-enable  default-case */
+            box.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          }
 
-            box.addEventListener('click', function (event) {
-                console.log(event);
-            });
+          window.addEventListener('keydown', (event) => {
+            changeBoxView(event.keyCode);
+          });
 
-            const bvh = document.getElementById("bvh");
 
-            bvh.addEventListener('click', function (event) {
-                this.textContent = `${this.textContent.includes('Hide') ? 'Show' : 'Hide'} Backface`;
-                box.classList.toggle('bvh');
-            });
+          box.addEventListener('click', (event) => {
+            console.log(event);
+          });
 
-            const perspective = document.getElementById("perspective");
+          const bvh = document.getElementById('bvh');
 
-            perspective.addEventListener('change', function (event) {
-                box.parentElement.style.perspective = `${this.value}px`;
-            });
+          bvh.addEventListener('click', function () {
+            this.textContent = `${this.textContent.includes('Hide') ? 'Show' : 'Hide'} Backface`;
+            box.classList.toggle('bvh');
+          });
 
+          const perspective = document.getElementById('perspective');
+
+          perspective.addEventListener('change', function () {
+            box.parentElement.style.perspective = `${this.value}px`;
+          });
         }
     </script>
 </body>
