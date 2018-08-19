@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hover Underline Animation</title>
+    <style>
+        .hover-underline {
+            display: inline-block;
+            position: relative;
+            color: #bada55;
+            font-weight: bold;
+        }
+
+        .hover-underline:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: currentcolor;
+            transform-origin: bottom left;
+            transition: transform .3s ease-out;
+            transform: scaleX(0);
+        }
+
+        .hover-underline:hover:after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<div>
+    <span class="hover-underline">Lorem ipsum</span> dolor sit amet consectetur adipisicing elit. Recusandae quibusdam veritatis
+    provident sunt debitis incidunt vel, eius vitae nam esse, molestias id necessitatibus? Minima, tempore aliquid! <span
+        class="hover-underline">Illo </span>qui dolorum suscipit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+    placeat accusantium sunt culpa <span class="hover-underline">architecto</span> fugit quia quam corporis totam, ipsa rem
+    aperiam modi perferendis accusamus! Minus officia nam nemo iste. Lorem ipsum dolor sit, amet consectetur adipisicing
+    elit. Inventore ex quis placeat illum optio quos quaerat hic odio eos aspernatur quae repudiandae quas, dolorem cumque
+    <span class="hover-underline">quisquam</span> nam animi labore quidem!
+</div>
+
+</html>
