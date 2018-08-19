@@ -35,63 +35,69 @@
 
         .options>* {
             flex-basis: 100%;
-            height:50px;
+            height: 50px;
         }
-        .options label{
+
+        .options label {
             transform: translateY(50%);
         }
 
         /* switch styles */
-        .switch{
-            position:relative;
+        .switch {
+            position: relative;
             display: inline-block;
-            width:60px;
-            height:35px;
+            width: 60px;
+            height: 35px;
         }
-        .switch input{
+
+        .switch input {
             display: none;
         }
-        .slider{
+
+        .slider {
             position: absolute;
-            top:0;
+            top: 0;
             right: 0;
-            bottom:0;
-            left:0;
+            bottom: 0;
+            left: 0;
             background: #e4e4;
             transition: .6s ease-in;
             border-radius: 30px;
         }
-        .slider::before{
+
+        .slider::before {
             position: absolute;
-            content:"";
-            width:25px;
-            left:5px;
-            top:5px;
-            height:25px;
-            border-radius:50%;
+            content: "";
+            width: 25px;
+            left: 5px;
+            top: 5px;
+            height: 25px;
+            border-radius: 50%;
             background: #fff;
             transition: .5s ease-in;
         }
-        input:checked+.slider{
+
+        input:checked+.slider {
             background: #2196F3;
         }
-        input:checked+.slider::before{
+
+        input:checked+.slider::before {
             transform: translateX(25px);
         }
 
-        .color-option{
+        .color-option {
             display: flex;
         }
 
-        .color-option input{
-            align-self:center;
-            margin-left:10px;
+        .color-option input {
+            align-self: center;
+            margin-left: 10px;
         }
 
-        #color-preview{
+        #color-preview {
             display: inline-block;
-            width:50px;
-            height:50px;
+            width: 50px;
+            height: 50px;
             background: #000;
             border-radius: 50%;
         }
@@ -106,13 +112,13 @@
             padding: 1rem;
         }
 
-        input{
+        input {
             border-radius: 5px;
-            height:30px;
+            height: 30px;
         }
 
-        input#font-size{
-            margin-top:1rem;
+        input#font-size {
+            margin-top: 1rem;
         }
     </style>
 </head>
@@ -136,7 +142,7 @@
                 <label for="bold" class="switch">
                     <input type="checkbox" id="bold">
                     <span class="slider round"></span>
-                </span>
+                    </span>
             </div>
             <div class="underline-option">
                 <!-- <label for="underline">underline</label> -->
@@ -146,7 +152,7 @@
                 <label for="underline" class="switch">
                     <input type="checkbox" id="underline">
                     <span class="slider round"></span>
-                </span>
+                    </span>
             </div>
             <div class="italic-option">
                 <!-- <label for="italic">italic</label> -->
@@ -156,7 +162,7 @@
                 <label for="italic" class="switch">
                     <input type="checkbox" id="italic">
                     <span class="slider round"></span>
-                </span>
+                    </span>
             </div>
         </div>
         <div class="content" id="content" contenteditable>Type Here</div>
@@ -178,8 +184,8 @@
         let italic = _('italic');
 
         color.addEventListener('input', function (event) {
-            changeContentStyle("color", "#"+this.value);
-            _('color-preview').style.background = "#"+this.value;
+            changeContentStyle("color", "#" + this.value);
+            _('color-preview').style.background = "#" + this.value;
         })
 
         fs.addEventListener('input', function (event) {
