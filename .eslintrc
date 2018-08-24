@@ -1,15 +1,15 @@
 {
-    "env":{
-        "browser":true,
-        "es6":true,
-        "node":true,
-        "jquery":true
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "jquery": true
     },
-    "extends": "airbnb",
-    "rules":{
-        "linebreak-style":0       
+    "extends": ["airbnb"],
+    "rules": {
+        "linebreak-style": 0
     },
-    "plugins":[
+    "plugins": [
         "html"
     ]
 }

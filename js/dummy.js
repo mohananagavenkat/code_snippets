@@ -37,7 +37,3 @@ underline.addEventListener('click', function () {
 italic.addEventListener('click', function () {
   return this.checked ? changeContentStyle('fontStyle', 'italic') : changeContentStyle('fontStyle', 'normal');
 });
-
-
-const something = 'let this happen';
-console.log(something);
