@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gradient Buttons</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            font-size: 16px;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            font-size: 1rem;
+            margin: 10px;
+            padding: .4rem .8rem;
+            border: none;
+            line-height: 1.5;
+            border-radius: .25rem;
+            color: #fff;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: #007bff;
+            background: linear-gradient(to right, #007bff, #3395ff);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            background: linear-gradient(to right, #6c757d, #868e96);
+        }
+
+        .btn-success {
+            background: #28a745;
+            background: linear-gradient(to right, #28a745, #34ce57);
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            background: linear-gradient(to right, #ffc107, #ffce3a);
+        }
+
+        .btn-danger {
+            background: #ffc107;
+            background: linear-gradient(to right, #dc3545, #e4606d);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button class="btn btn-primary">Click Me</button>
+        <button class="btn btn-secondary">Click Me</button>
+        <button class="btn btn-success">Click Me</button>
+        <button class="btn btn-warning">Click Me</button>
+        <button class="btn btn-danger">Click Me</button>
+    </div>
+</body>
+
+</html>
