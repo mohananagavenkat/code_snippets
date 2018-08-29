@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>File Reader API Demo</title>
+</head>
+
+<body>
+    <input accept="image/*" type="file" id="avatar">
+    <script>
+        const avatar = document.getElementById('avatar');
+
+        avatar.addEventListener('change', (event) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(event.target.files[0]);
+          reader.onload = () => {
+            const prev = document.querySelector('.avatar');
+            if (prev) document.body.removeChild(prev);
+            const img = document.createElement('img');
+            document.body.appendChild(img);
+            img.classList.add('avatar');
+            img.src = reader.result;
+            img.style.width = '150px';
+            img.style.height = '150px';
+          };
+        });
+    </script>
+</body>
+
+</html>
