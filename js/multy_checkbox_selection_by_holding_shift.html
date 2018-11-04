@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Multy Checkbox Selecting By Holding Shift Key</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: gold;
+            height: 100%;
+        }
+
+        .list {
+            flex-basis: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .item {
+            flex-basis: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid lightgray;
+            box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+            background: #fff;
+        }
+
+        .item:nth-child(2n) {
+            transform: skew(10deg);
+            z-index: 2
+        }
+
+        .item:nth-child(2n+1) {
+            transform: skew(-10deg);
+        }
+
+        .item input[type="checkbox"] {
+            flex-basis: 10%;
+            padding: 1rem;
+        }
+
+        .item p {
+            flex-basis: 90%;
+            padding: 1rem;
+            border-left: 1px solid lightgray;
+        }
+
+        @media screen and (max-width:500px) {
+            .list {
+                flex-basis: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list">
+        <div class="item">
+            <input type="checkbox">
+            <p>some item here and item1</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>some item here and item2</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>some item here and item3</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>some item here and item4</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>some item here and item5</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>some item here and item6</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>some item here and item7</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>some item here and item8</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>some item here and item9</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>some item here and item10</p>
+        </div>
+    </div>
+    <script>
+        const inputs = [...document.querySelectorAll(".item input[type='checkbox']")];
+
+        inputs.forEach(input => input.addEventListener("click", handleClick));
+
+        let lastIndex;
+
+        function handleClick() {
+            console.log("lastIndex : " + lastIndex);
+            let currentIndex = inputs.findIndex(input => input === this);
+            console.log(event.shiftKey, this.checked);
+            if (event.shiftKey && this.checked) {
+                if (lastIndex || lastIndex == 0) {
+                    if (currentIndex > lastIndex) {
+                        [startIndex, endIndex] = [lastIndex, currentIndex];
+                    } else {
+                        [startIndex, endIndex] = [currentIndex, lastIndex];
+                    }
+                    for (let i = startIndex; i <= endIndex; i++) {
+                        inputs[i].checked = true;
+                    }
+                    lastIndex = currentIndex;
+                    console.log(startIndex, endIndex);
+                } else {
+                    lastIndex = currentIndex;
+                }
+            } else if (this.checked) {
+                lastIndex = currentIndex;
+            }
+        }
+    </script>
+</body>
+
+</html>

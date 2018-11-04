@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <style>
+        .hl {
+            background: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <p>qLorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores officiis, similique saepe harum commodi
+        impedit. Voluptatem, ullam ea, dicta, rem excepturi alias autem accusamus, nulla corporis incidunt iusto ipsa
+        distinctio?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo aspernatur omnis aperiam odit optio, porro
+        eius neque ipsum, necessitatibus odio nihil non obcaecati, magni architecto rerum quo eaque tenetur,
+        doloremque.
+        qLorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores officiis, similique saepe harum commodi
+        impedit. Voluptatem, ullam ea, dicta, rem excepturi alias autem accusamus, nulla corporis incidunt iusto ipsa
+        distinctio?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo aspernatur omnis aperiam odit optio, porro
+        eius neque ipsum, necessitatibus odio nihil non obcaecati, magni architecto rerum quo eaque tenetur,
+        doloremque.qLorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores officiis, similique saepe harum
+        commodi impedit. Voluptatem, ullam ea, dicta, rem excepturi alias autem accusamus, nulla corporis incidunt
+        iusto ipsa distinctio?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo aspernatur omnis aperiam odit optio, porro
+        eius neque ipsum, necessitatibus odio nihil non obcaecati, magni architecto rerum quo eaque tenetur,
+        doloremque.qLorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores officiis, similique saepe harum
+        commodi impedit. Voluptatem, ullam ea, dicta, rem excepturi alias autem accusamus, nulla corporis incidunt
+        iusto ipsa distinctio?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo aspernatur omnis aperiam odit optio, porro
+        eius neque ipsum, necessitatibus odio nihil non obcaecati, magni architecto rerum quo eaque tenetur,
+        doloremque.qLorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores officiis, similique saepe harum
+        commodi impedit. Voluptatem, ullam ea, dicta, rem excepturi alias autem accusamus, nulla corporis incidunt
+        iusto ipsa distinctio?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo aspernatur omnis aperiam odit optio, porro
+        eius neque ipsum, necessitatibus odio nihil non obcaecati, magni architecto rerum quo eaque tenetur,
+        doloremque.
+    </p>
+    <script>
+        const elements = document.body.querySelectorAll("*:not(script):not(style)");
+
+        console.log(elements);
+
+        let searchBox = document.getElementById("search");
+
+        let searchCountEle = document.getElementById("searchCount");
+
+        searchBox.addEventListener("keyup", function (event) {
+            highlightMatchedText(this.value);
+        });
+
+
+        function highlightMatchedText(searchTerm) {
+            if (!searchTerm) {
+                updateSearchCount(0);
+                return;
+            }
+            let searchCount = 0;
+            elements.forEach(element => {
+                const html = element.innerHTML;
+                const refactorHtml = html.replace(/\<span.*\>(.*)\<\/span>/g, "$1");
+                if (refactorHtml.includes(searchTerm)) {
+                    searchCount++;
+                    const changed_html = refactorHtml.replace(searchTerm,
+                        `<span class="hl">${searchTerm}</span>`);
+                    element.innerHTML = changed_html;
+                }
+            });
+            updateSearchCount(searchCount);
+        }
+
+        function updateSearchCount(count) {
+            searchCountEle.textContent = `${count} Results`;
+        }
+    </script>
+</body>
+
+</html>

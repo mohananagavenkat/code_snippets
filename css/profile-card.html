@@ -1,139 +1,115 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>JS Bin</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-    *{
-  padding: 0;
-  margin: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
 
-html,body{
-  width:100%;
-  height:100%;
-  perspective:700px;
-  transform-style:preserve-3d;
-}
+    *:before,
+    *:after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
 
-.card-wrapper{
-  width:50%;
-  position: relative;
-  margin:5em auto;
-  transform:rotateX(20deg) translateY(10px);
-}
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.card-front{
-  background:linear-gradient(to right,gold,orange);
-  border-radius:8px;
-  transform:translateZ(0px);
-  animation:topanddown 1s linear infinite;
-}
+    .card {
+      width: 50%;
+      margin: auto;
+      background: #fff;
+      max-width: 400px;
+    }
 
-.card-back{
-  position: absolute;
-  width:100%;
-  height:100%;
-  top:10px;
-  background:#fff;
-  box-shadow:0px 0px 10px rgba(0,0,0,0.1);
-  z-index:-1;
-  border-radius:8px;
-}
+    .card-thumbnail {
+      position: relative;
+    }
 
-.top-links{
-  
-}
-.top-links>span{
-  display:inline-block;
-  width:30px;
-  height:30px;
-  line-height:30px;
-  text-align:Center;
-  color:#fff;
-}
-.top-links>span:nth-of-type(2){
-  float:right;
-}
+    .card-thumbnail .caption {
+      position: absolute;
+      top: 0;
+      color: #fff;
+      font-size: 20px;
+      right: 25px;
+      top: 10px;
+      transform-origin: top right;
+      transform: rotateZ(-90deg);
+    }
 
-.profile{
-  text-align:center;
-  color:#fff;
-  font-weight:bold;
-}
-.profile>img.pic{
-  display:block;
-  width:50%;
-  border-radius:50%;
-  margin:auto;
-  box-sizing:content-box;
-  border:5px solid white;
-}
+    .card-thumbnail img {
+      display: block;
+      max-width: 100%;
+      border-radius: 5px 5px 0 0;
+    }
 
-.user-info{
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  padding:2rem 0;
-}
-.user-info>*{
-  flex:1;
-  text-align:center;
-  color:#fff;
-}
+    .card-content {
+      display: block;
+      border: 1px solid transparent;
+      border-radius: 0px 0px 5px 5px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    }
 
-@keyframes topanddown{
-  0% {
-      transform:translateZ(55px);
-  }
-  25%{
-    transform:translateZ(45px);
-  }
-  50%{
-    transform:translateZ(35px);
-  }
-  75%{
-    transform:translateZ(45px);
-  }
-  100%{
-    transform:translateZ(55px);
-  }
-}
+    .card-content h2 {
+      font-size: 2rem;
+      text-align: center;
+      opacity: .5;
+      margin: 1rem 0 4rem 0;
+    }
+
+    .social-icons {
+      display: flex;
+    }
+
+    .social-icons>i {
+      font-size: 20px;
+      flex: 1;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    @media screen and (max-width:550px) {
+      .card {
+        width: 80%;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="card-wrapper">
-    <div class="card-front">
-    <div class="top-links">
-      <span class="icon"><i class="fa fas fa-facebook"></i></span>
-      <span class="icon"><i class="fa fa-twitter"></i></span>
+  <div class="card">
+    <div class="card-thumbnail">
+      <img src="https://images.unsplash.com/photo-1530218233479-3fc0d717cd52?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1b816ca5f2f705e45a0c57c83e512d32&auto=format&fit=crop&w=2100&q=80"
+        alt="">
+      <div class="caption">some caption</div>
     </div>
-    <div class="profile">
-      <img src="https://lh6.googleusercontent.com/-5VUJsHi0Ar8/AAAAAAAAAAI/AAAAAAAAB9o/sV4oyxAWmqk/photo.jpg?sz=328" alt="Mohana Naga Venkat Profile Photo" class="pic">
-      <p class="name">Mohana Naga Venkat</p>
-      <p class="designation">Webdeveloper</p>
-    </div>
-    <div class="user-info">
-      <div>
-        <p>200</p>
-        <p>Followers</p>
-      </div>
-      <div>
-        <p>200</p>
-        <p>Followers</p>
-      </div>
-      <div>
-        <p>200</p>
-        <p>Followers</p>
+    <div class="card-content">
+      <h2>Something</h2>
+      <div class="social-icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-skype"></i>
+        <i class="fa fa-instagram"></i>
       </div>
     </div>
-      </div>
-    <div class="card-back"></div>
   </div>
 </body>
+
 </html>
