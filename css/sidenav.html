@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sidenavigation</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Raleway|Roboto" rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Roboto, Lato, Raleway, sans-serif;
+        }
+
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        header {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            background: #26a69a;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .brand-name {
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: Raleway;
+            opacity: .7;
+            font-size: 1.5rem;
+        }
+
+        .show-sidenav {
+            border: none;
+            background: none;
+            color: #fff;
+            font-size: 25px;
+            cursor: pointer;
+            padding: .5rem;
+            /* border: 1px solid; */
+            border-radius: 50%;
+        }
+
+        button[class*="material-icons"]:active,
+        button[class*="material-icons"]:focus,
+        button[class*="material-icons"]:focus:active {
+            outline: none;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .sidenav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            pointer-events: none;
+            will-change: opacity;
+            transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
+        }
+
+        .sidenav {
+            position: relative;
+            top: 0;
+            right: 0;
+            width: 90%;
+            max-width: 320px;
+            height: 100%;
+            background: #fff;
+            transform: translatex(-102%);
+            box-shadow: 5px 0px 10px 0px rgba(0, 0, 255, 0.1);
+            transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+        }
+
+        .sidenav.visible {
+            transform: translateX(0);
+        }
+
+        .sidenav-container.visible {
+            opacity: 1;
+            pointer-events: auto;
+            /* transition-delay: .2s; */
+        }
+
+        .sidenav-header {
+            height: 200px;
+            background: rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .sidenav-header .cover-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            filter: brightness(.9);
+        }
+
+        .sidenav-header .profile-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1rem;
+        }
+
+        .sidenav-header .profile-wrapper p {
+            color: white;
+            font-weight: bold;
+            padding-top: .5rem;
+            letter-spacing: .5px;
+        }
+
+        .img-responsive {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .sidenav-header .profile-image {
+            width: 100px;
+            height: 100px;
+        }
+
+        .sidenav-header .profile-image img {
+            border-radius: 100%;
+        }
+
+        .hide-sidenav {
+            border: none;
+            background: none;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            font-size: 36px;
+            line-height: 50px;
+            background: rgba(0, 0, 0, 0.15);
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+
+        ul.nav {
+            width: 100%;
+            list-style: none;
+        }
+
+        ul.nav li {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        ul.nav li a {
+            display: block;
+            padding-left: 1rem;
+            color: #222;
+            text-decoration: none;
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            font-family: Lato;
+        }
+
+        ul.nav li a:hover,
+        ul.nav li a:focus,
+        ul.nav li a:focus:hover,
+        ul.nav li a:active:hover,
+        ul.nav li a:active {
+            outline: none;
+            background: rgba(100, 100, 100, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <button class="show-sidenav material-icons">menu</button>
+        <h1 class="brand-name">My App</h1>
+    </header>
+    <aside class="sidenav-container">
+        <nav class="sidenav visible">
+            <div class="sidenav-header">
+                <div class="cover-image">
+                    <img class="img-responsive" src="https://scontent.fmaa2-1.fna.fbcdn.net/v/t1.0-9/20621092_2093657740865160_5492800080235222927_n.jpg?_nc_cat=100&_nc_ht=scontent.fmaa2-1.fna&oh=23f1f466b3ce61c1e4c2dc9c0b9dde66&oe=5C8824B5"
+                        alt="Cover Photo">
+                </div>
+                <div class="profile-wrapper">
+                    <div class="profile-image">
+                        <img class="img-responsive" src="https://scontent.fmaa2-2.fna.fbcdn.net/v/t31.0-8/25189074_2185298898367710_7214384127023418311_o.jpg?_nc_cat=110&_nc_ht=scontent.fmaa2-2.fna&oh=804e5258af5a3cfa5a96ea1ce43669ca&oe=5C7AB2AC"
+                            alt="Profile photo">
+                    </div>
+                    <p>Mohana Naga Venkat. Sayempu</p>
+                    <p>mohananagavenkat@gmail.com</p>
+                </div>
+                <button class="hide-sidenav material-icons">close</button>
+            </div>
+            <ul class="nav">
+                <li><a href="#">One</a></li>
+                <li><a href="#">Two</a></li>
+                <li><a href="#">Three</a></li>
+                <li><a href="#">Four</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <script>
+        class SideNav {
+
+            constructor() {
+
+                // getting DOM elements
+                this.sidenavContainer = document.querySelector(".sidenav-container");
+                this.sidenav = document.querySelector(".sidenav");
+                this.showSidenavButton = document.querySelector(".show-sidenav");
+                this.hideSidenavButton = document.querySelector(".hide-sidenav");
+
+
+                // binding event listeners by passing this
+                this.showSidenav = this.showSidenav.bind(this);
+                this.hideSidenav = this.hideSidenav.bind(this);
+                this.handleOutsideClick = this.handleOutsideClick.bind(this);
+                this.addEvents();
+            }
+
+            addEvents() {
+                console.log("binding events");
+                this.sidenavContainer.addEventListener("click", this.handleOutsideClick)
+                this.showSidenavButton.addEventListener("click", this.showSidenav);
+                this.hideSidenavButton.addEventListener("click", this.hideSidenav);
+            }
+
+            showSidenav() {
+                console.log("showing sidenav");
+                this.sidenav.classList.add("visible");
+                this.sidenavContainer.classList.add("visible");
+                this.sidenav.classList.add("sidenav-animatable");
+            }
+
+            hideSidenav() {
+                console.log("hiding sidenav");
+                this.sidenav.classList.remove("visible");
+                this.sidenavContainer.classList.remove("visible");
+            }
+
+            handleOutsideClick(event) {
+                console.log(event.target, event.currentTarget);
+                if (event.target === event.currentTarget) {
+                    this.hideSidenav();
+                }
+            }
+
+        }
+
+        new SideNav();
+    </script>
+</body>
+
+</html>
