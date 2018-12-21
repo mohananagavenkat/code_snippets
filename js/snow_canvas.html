@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    canvas {
+      background: #3d3352;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="mycanvas"></canvas>
+  <script>
+    let width = height = 0;
+    function getRandomNumber(start, end) {
+      return start + (Math.random() * (end - start));
+    }
+    class SnowFlakes {
+      constructor() {
+        this.setDimentions();
+      }
+      setDimentions() {
+        const x = getRandomNumber(0, width);
+        const y = getRandomNumber(0, height);
+        const vx = getRandomNumber(-3, 3);
+        const vy = getRandomNumber(2, 5);
+        const r = getRandomNumber(1, 3);
+        const alpha = getRandomNumber(0.15, 0.95);
+        this.startX = x;
+        this.startY = y;
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.vx = vx;
+        this.vy = vy;
+        this.alpha = alpha;
+      }
+      update() {
+        if (this.x > width || this.y > height) {
+          this.setDimentions();
+        }
+        this.x = this.x + this.vx;
+        this.y = this.y + this.vy;
+      }
+    }
+    class SnowDrawing {
+      constructor() {
+        this.canvas = document.querySelector("#mycanvas");
+        this.context = this.canvas.getContext("2d");
+        this.snowFlakes = [];
+        this.setCanvasDimentions();
+        window.addEventListener("resize", () => {
+          this.setCanvasDimentions();
+        })
+        this.generateSnowFlakes();
+        this.updateCanvas();
+        setInterval(() => {
+          this.updateCanvas();
+        }, 16);
+      }
+      setCanvasDimentions() {
+        width = innerWidth;
+        height = innerHeight;
+        this.canvas.width = width;
+        this.canvas.height = height;
+        console.log();
+      }
+      generateSnowFlakes() {
+        for (let i = 0; i < width / 4; i++) {
+          this.snowFlakes.push(new SnowFlakes());
+        }
+      }
+      updateCanvas() {
+        this.context.clearRect(0, 0, width, height);
+        this.context.fillStyle = "#fff";
+        console.log(this.snowFlakes);
+        // this.context.fillRect(this.getRandomNumber(0, width), this.getRandomNumber(0, width), this.getRandomNumber(0, width), this.getRandomNumber(0, width));
+        this.snowFlakes.forEach(flake => {
+          flake.update();
+          this.context.globalAlpha = flake.alpha;
+          this.context.beginPath();
+          this.context.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2, true);
+          this.context.fill();
+          this.context.closePath();
+        });
+      }
+    }
+    new SnowDrawing();
+  </script>
+</body>
+
+</html>
